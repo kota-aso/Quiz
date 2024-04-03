@@ -10,12 +10,54 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("第1問")
+                .font(.largeTitle)
+                .padding()
+            Text("帽子の中に入っている動物はなに？")
+                .font(.title)
+                .padding()
+            Button {
+                
+            } label: {
+                Text("カメ")
+                    .padding()
+                    .frame(width: UIScreen.main.bounds.width*0.9)
+                    .background(.green)
+                    .foregroundColor(.white)
+                    .padding(5)
+            }
+            Button {
+                
+            } label: {
+                Text("ウサギ")
+                    .padding()
+                    .frame(width: UIScreen.main.bounds.width*0.9)
+                    .background(.green)
+                    .foregroundColor(.white)
+                    .padding(5)
+            }
+            Button {
+                
+            } label: {
+                Text("ウシ")
+                    .padding()
+                    .frame(width: UIScreen.main.bounds.width*0.9)
+                    .background(.green)
+                    .foregroundColor(.white)
+                    .padding(5)
+            }
+            Button {
+                
+            } label: {
+                Text("キリン")
+                    .padding()
+                    .frame(width: UIScreen.main.bounds.width*0.9)
+                    .background(.green)
+                    .foregroundColor(.white)
+                    .padding(5)
+            }
+
         }
-        .padding()
     }
 }
 
