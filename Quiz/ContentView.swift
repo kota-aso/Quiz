@@ -8,55 +8,51 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var judgeImageName = "circlebadge"
+    @State var judgeImageColor = Color.red
+    @State var isShowJudgeImage = false
+    
+    let choice = ["かめ", "ウサギ", "うし", "キリン"]
+    let answer = "うし"
+    
     var body: some View {
-        VStack {
-            Text("第1問")
-                .font(.largeTitle)
-                .padding()
-            Text("帽子の中に入っている動物はなに？")
-                .font(.title)
-                .padding()
-            Button {
-                
-            } label: {
-                Text("カメ")
+        ZStack {
+            VStack {
+                Text("第1問")
+                    .font(.largeTitle)
                     .padding()
-                    .frame(width: UIScreen.main.bounds.width*0.9)
-                    .background(.green)
-                    .foregroundColor(.white)
-                    .padding(5)
-            }
-            Button {
-                
-            } label: {
-                Text("ウサギ")
+                Text("ぼうしの中に入っている動物はなに？")
+                    .font(.title)
                     .padding()
-                    .frame(width: UIScreen.main.bounds.width*0.9)
-                    .background(.green)
-                    .foregroundColor(.white)
-                    .padding(5)
+                Spacer()
+                ForEach(0..<choice.count, id: \.self) { num in
+                    Button {
+                        choiceButtonAction(selectAnswer: choice[num])
+                    } label: {
+                        Text(choice[num])
+                            .padding()
+                            .frame(width: UIScreen.main.bounds.width*0.9)
+                            .background(.green)
+                            .foregroundColor(.white)
+                            .padding(5)
+                    }
+                }
             }
-            Button {
-                
-            } label: {
-                Text("ウシ")
-                    .padding()
-                    .frame(width: UIScreen.main.bounds.width*0.9)
-                    .background(.green)
-                    .foregroundColor(.white)
-                    .padding(5)
+            .padding()
+            if isShowJudgeImage {
+                Image(systemName: judgeImageName)
+                    .foregroundColor(judgeImageColor)
+                    .font(.system(size: 400, weight: .bold))
             }
-            Button {
-                
-            } label: {
-                Text("キリン")
-                    .padding()
-                    .frame(width: UIScreen.main.bounds.width*0.9)
-                    .background(.green)
-                    .foregroundColor(.white)
-                    .padding(5)
-            }
-
+        }
+    }
+    
+    func choiceButtonAction(selectAnswer: String) {
+        isShowJudgeImage = true
+        judgeImageName = selectAnswer == answer ? "circlebadge" : "multiply"
+        judgeImageColor = selectAnswer == answer ? .red : .blue
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            isShowJudgeImage = false
         }
     }
 }
